@@ -5,6 +5,7 @@
 (3)調整背景放置大小
 (4)到chrome的檢查 → style 可以看
 
+
 ``` CSS
 #box1{
 
@@ -21,6 +22,8 @@ height:500px　　// 這邊是背景圖要放多大，如果這邊大於背景�
 width:200px
 }
 ```
+
+
 - 邊框
 ``` CSS
 #box1{
@@ -40,6 +43,8 @@ outline:5px solid green　　// outline 也是往外長出去，在 border 外�
 
 }
 ```
+
+
 - 留白
 ``` CSS
 #box1{
@@ -53,14 +58,7 @@ margin:30px　　// 外部留白，不影響物件內容。背景仍是100*100�
 
 }
 ```
-- Box model 物件大小控制
-``` CSS
-#box1{
 
-box-sizing:border-box;　　/ 原本padding、border是往外長，這個可以往內長，方便控制元素大小
-
-}
-```
 
 - 文字屬性
 ``` CSS
@@ -76,14 +74,18 @@ line-height:1.5em;　　// 行高
 
 text-align:center;　　// 對齊哪裡，center/right...，但多行就沒辦法，可以用padding撐開
 
-work-break:break-word;　　// 斷行，break-all會直接切開，break-word會照著字切，不會把單字分成兩成
-white-space:nowrap;　　// 不要分開，永遠是同一行
+work-break:break-word;　　
+// 斷行，break-all會直接切開，break-word會照著字切，不會把單字分成兩成
+
+white-space:nowrap;　　
+// 如何處理空白。nowrap 是不要分開，永遠是同一行；pre-line 是換行；pre 是保留 html 原來的樣子
 
 overflow:hidden;　　// 文字超出背景時的處理方法。hidden會直接被截斷，scroll是文字會變成可以滾動的拉軸，auto也是滾動
 text-overflow:ellipsis;　　// 超出時會變成...
 
 }
 ```
+
 
 - 動畫 
 ``` CSS
@@ -115,3 +117,17 @@ left:50%;
 transform:translateX(-50%,-50%);　　// 可以讓物件置中
 
 }
+```
+
+
+- 切版
+    - 將畫面分區，用不同 `div` 切出不同版面
+```CSS
+#box1{
+
+display:flex;　　// 把底下的元素排成左右
+align-items: center;　　// 讓底下的元素置中對齊
+vertical-align:; 　　// inline 元素怎麼和其他東西並排
+
+}
+```

@@ -1,20 +1,24 @@
 ## CSS（Cascading Style Sheets）階層式樣式表
 ### Selector
-- Selector 寫法：selector { attribute : value; }  
-(1) 直接寫在 html 的標籤裡面。  
+- Selector 寫法：selector { attribute : value; }
+1. 直接寫在 html 的標籤裡面。  
 ```CSS
 <div style = "background:yellow" >
 ```  
-(2) 在html的 `head` 裡面單獨寫 `style` 的標籤。  
+2. 在html的 `head` 裡面單獨寫 `style` 的標籤。  
 ```CSS
 <style> div { background : pink } </style>
 ```  
-(3) 另外開一個CSS檔案再連接出去。  
+3. 另外開一個CSS檔案再連接出去。  
 ```CSS
 <link　　rel = "stylesheet"　　href = "./fileNameAndPath"　/>
 ```
+
+
 -----
-- Universal Selector：選取html所有的內容。   
+
+
+- Universal Selector：`*` ，選取html所有的內容。   
 ```CSS
 * { color : blue }
 ```
@@ -32,7 +36,11 @@ div{ background : yellow }
     ...
 }
 ```
+
+
 -----
+
+
 - 選取符合多個規則的元素
 ```CSS
 div.class1.class2 {   
@@ -88,7 +96,7 @@ div:nth-child(3){
 ```
 - pseudo element：`before` & `after`
 ```CSS
-.price ::before{
+.price:before{
     content:"要裝的內容，像$、NTD等等"
 }
 /* 會在標籤前面貼上一個元素 */
