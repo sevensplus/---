@@ -56,9 +56,9 @@ HTML（HyperText Markup Language）：超文本標記語言，會有很多標籤
 - `<input> `決定輸入類型，加`div`會分行。輸入的`type` 有 `text、password、email、date、radio（單選）、checkbox（複選）`等等。在 `radio` 和 `checkbox` 當中，不同選項的標籤中要指定 `name` 才會形成一個group，另外加入 id label 的話，文字會和選項綁在一起，按文字也可以選到該選項
 -----
 
-- `<a>` 錨點、超連結，可以連到外面網頁，或該網頁中某個地方（像網頁底層）。標籤中有兩個屬性：  
- `target` 表示要不要另開分頁，self 是直接在原有分頁開啟，_blank是另外開一個新的。  
- `href`（hypertext refernce）表示連結地址，可以放網址或標籤。連到其他位置時，要在 h1~h6 等標籤中加入 `id = "p1"` 的位置，再寫`href =  # p1` 連過去。
+- `<a>` 錨點、超連結，可以連到外面網頁，或該網頁中某個地方（像網頁底層）。標籤中有兩個屬性：
+    - `target` 表示要不要另開分頁，self 是直接在原有分頁開啟，_blank是另外開一個新的。  
+    - `href`（hypertext refernce）表示連結地址，可以放網址或標籤。連到其他位置時，要在 h1~h6 等標籤中加入 `id = "p1"` 的位置，再寫`href =  # p1` 連過去。
 ```html 
 <a　href = "網址"／#位置　target ='_blank' > 超連結名稱 </a>
 ```
@@ -83,27 +83,27 @@ Escape 跳脫（讓某些符號不經過轉換，直接呈現在網頁上）
 ```
 ------
 SEO（Search Engine Optimization）搜尋引擎優化：幫搜尋引擎理解你的網頁、更好抓到資料  
-1. 在`meta`設定`keyword`和`description`。例如：
+- 在`meta`設定`keyword`和`description`。例如：
 ```html
 <meta　name="keywords"　content="關鍵字">
 <meta　name="description"　content="描述">
 ```
-2. 在meta設定og（Open Graph Protocal），通常是FB在用，可以去FB偵錯工具檢視效果。例如：
+- 在meta設定og（Open Graph Protocal），通常是FB在用，可以去FB偵錯工具檢視效果。例如：
 ```html
 <meta　property="og:title"　content="標題名">
 ```
-3. JSON-ld（JSON for Linking Date），通常是google在看，就是寫一段JSON資料當作簡介。
+- JSON-ld（JSON for Linking Date），通常是google在看，就是寫一段JSON資料當作簡介。
 ```html
 <script type="application/ld+JSON>  {......}  </script>
 ```
-4. `robots.txt`（直接在網址後面加上去），給爬蟲機器看的檔案。進去可以看到allow/disallow，Sitemap是網站地圖、跟搜尋引擎說要爬哪些網站
+- `robots.txt`（直接在網址後面加上去），給爬蟲機器看的檔案。進去可以看到allow/disallow，Sitemap是網站地圖、跟搜尋引擎說要爬哪些網站
 
-5. 跟搜尋引擎說有哪些翻譯成不同語言、但相同內容的網頁
+- 跟搜尋引擎說有哪些翻譯成不同語言、但相同內容的網頁
 ```html
 <link　rel = "alternate"　hreflang="語言"　href ="網址"/>
 ``` 
-6. 寫給不同網站特定資料方便讀取
+- 寫給不同網站特定資料方便讀取
 ```html 
 <meta　property="al:ios:app_name"　content="名字">　／　<meta property="twitter:app:id:ipad"　name=""　id="">
 ``` 
-7. Google Search Console ：可以看網站流量等資料
+- Google Search Console ：可以看網站流量等資料

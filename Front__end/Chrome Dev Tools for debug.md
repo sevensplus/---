@@ -80,4 +80,3 @@
     - subtree modification：子元素變更
     - attribute modification：屬性變更
     - node removal：被刪除
-
