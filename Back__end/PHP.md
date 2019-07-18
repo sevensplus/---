@@ -37,3 +37,5 @@ session_destroy();
 ```
 
 - [參考資料](https://www.w3schools.com/php/php_mysql_select.asp)
+- [PHP 5 Sessions](https://www.w3schools.com/php/php_sessions.asp)
+- [PHP Session 使用介紹，啟用與清除 session](http://www.webtech.tw/info.php?tid=33)
