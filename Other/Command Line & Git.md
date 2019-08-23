@@ -75,7 +75,7 @@
 | git branch -d name        |刪掉branch                          |
 | git checkout branch_name  |切換到分支資料夾                     |
 | git merge branch_b  |合併分支，把另一個(b)併進來（現在位於a）。如果檔案有衝突 → git status → 手動更改（用vim進入更改） → git commit -am "new"  |
-| git checkout branch_name  |可以透過這個抓遠端的branch
+| git checkout branch_name  |可以透過這個抓遠端的branch            |
 
 ---
 
