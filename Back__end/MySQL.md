@@ -195,6 +195,14 @@ $conn->query('UPDATE ... FROM ... WHERE ... ');  //動作二
 $conn->commit();
 ```
 
+```php
+if ( ... ){
+    $conn->rollback();
+} else {
+    $conn->commit();
+}
+```
+
 - - - - - 
 
 ## ACID

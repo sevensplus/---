@@ -44,49 +44,54 @@
 ---
 
 ### 基本指令
-- git init 初始化
-- git clone SSH 把網路上的專案抓下來
-- git status 檢視版本狀況，staged是被版本控制，untracked是不加入
-- git add 加入版本控制，git add 檔案，git add . 會把全部加進去，- git rm --cached 檔案可以把原本被控制的移出來
-- git commit 建新版本，可以加-m"  "(message)
-- git commit --amend 更改commit名稱
-- git reset HEAD^ 回到上一個commit版本，--hard代表commit和改過的東西的都不要了，預設是--soft，拋棄commit但是改過的東西還在（取消存檔但是沒還原）
-- git log 看歷史資料，git log --oneline可以看前七碼就好（比較簡潔）
-- git checkout 回到過去版本，git checkout 版本號（很長那串），git checkout master回來最新版，也可以走到其他branch
-- git checkout --file.txt，把某個檔案復原到上次commit狀態
-- git chechout -b new_fold_name 開新branch同時轉移過去
-- .gitignore 忽略某些東西，touch .gitignore → vim .gitignore → 把要忽略的檔案名打進去存檔。這個檔案本身要加入版本控制中
-- git commit -am 'version_3' 綜合add和commit的指令，但新檔案無法commit，要先add加入，才能對所有東西下指令
-- git diff 看這次和上次的差別
-- git commit -m'' --no-verify 可以跳過eslint檢查
-- 小結：檔案改變
-    - git checkout 恢復原本狀態   or
-    - git add 將檔案加入版本控制 （蓋新資料夾）→ git status 檢視 → git commit -m "version_2" 建立新版本（改資料夾名稱）
+|  指令                   | 說明                              |  範例                                 |
+|------------------------|-----------------------------------|---------------------------------------|
+| git init               | 初始化                             |                                      |
+| git clone SSH          | 把網路上的專案抓下來                |                                       |
+| git status             |檢視版本狀況，staged是被版本控制，untracked是不加入|                          |
+| git add                |加入版本控制                        |git add file_name，git add . 把全部加入 |
+| git rm --cached        |檔案可以把原本被控制的移出來         |                                       |
+| git commit             |建新版本                           | -m"  "(message)                       |
+| git commit --amend     |更改commit名稱                     |                                       |
+| git reset HEAD^        |回到上一個commit版本   |--hard：commit、改過的東西的都不要了。--soft：預設值，拋棄commit但是改過的東西還在（取消存檔但是沒還原）|
+| git log                |看歷史資料                         |git log --oneline：看前七碼就好（較簡潔）  |
+| git checkout           |回到過去版本                       |git checkout 版本號，git checkout master 回來最新版，或走到其他branch  |
+| git checkout --file.txt|把某個檔案復原到上次commit狀態      |                                         |
+| git chechout -b new_fold_name |開新branch同時轉移過去      |                                         |
+| .gitignore             |忽略某些東西                   |touch .gitignore → vim .gitignore → 把要忽略的檔案名打進去存檔。這個檔案本身要加入版本控制中  |
+| git commit -am 'version_3'|綜合add和commit的指令，但新檔案無法commit，要先add加入，才能對所有東西下指令| |
+| git diff               |看這次和上次的差別                  |                                         |
+| git commit -m'' --no-verify|跳過eslint檢查                 |                                         |
+|                        |commit 流程     |git add 將檔案加入版本控制 → git status 檢視 → git commit -m "version_2" 建立新版本|
 
 ---
 
-### Branch指令
-- git branch new_branch_name 建立branch
-- git branch -m 名稱，更改名字
-- git branch -v 看有哪些branch，會顯示branch以及裡面最後一個修改的commit
-- git branch -d name 刪掉branch
-- git checkout branch_name 切換到分支資料夾
-- git merge branch_b 合併分支，把另一個(b)合併進來（現在處於的地方，a）。如果兩個檔案有衝突 → git status → 進入檔案手動更改（可以用vim進入更改） → git commit -am "new"
-- git checkout branch_name，可以透過這個抓遠端的branch
+### Branch指令  |
+|  指令                      | 說明                              |
+|---------------------------|-----------------------------------|
+| git branch new_branch_name|建立branch                         |
+| git branch -m             |名稱，更改名字                      |
+| git branch -v             |看有哪些branch，會顯示branch以及裡面最後一個修改的commit  |
+| git branch -d name        |刪掉branch                          |
+| git checkout branch_name  |切換到分支資料夾                     |
+| git merge branch_b  |合併分支，把另一個(b)併進來（現在位於a）。如果檔案有衝突 → git status → 手動更改（用vim進入更改） → git commit -am "new"  |
+| git checkout branch_name  |可以透過這個抓遠端的branch
 
 ---
 
-### Github 操作
-- git remote add origin 網址，增加一個遠端的repository，新增一個remote叫做origin
-- git push -u origin master 把東西放到origin上的某個branch，master是branch的名稱、可自訂，-u可以省略
-- git pull origin master，把上面的更新抓下來
-- git clone SSH網址，把別人的專案載下來，也可以在網頁上直接按Fork複製到自己那邊
+### Github 操作  |
+|  指令                       | 說明                                             |
+|-----------------------------|-------------------------------------------------|
+| git remote add origin 網址  |增加一個遠端的repository，新增一個remote叫做origin  |
+| git push -u origin master   |把東西放到origin上的某個branch，master是branch的名稱、可自訂，-u可以省略  |
+| git pull origin master      |把上面的更新抓下來                                 |
+| git clone SSH網址           |把別人的專案載下來，也可以在網頁上直接按Fork複製到自己那邊|
 
 > Q：Hook?  
 > A：像是偵測事件發生等等。例如在commit前做一些檢查
 
 ---
-### Git進階指令
+### Git進階指令  |
 - rebase
 - cherry-pick
 - tag

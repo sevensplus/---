@@ -4,17 +4,17 @@
 2. 事件：如何監聽事件、做出反應
 3. 資料：如何和伺服器交換資料
 
-## 
-- 在瀏覽器中執行 js
-    - 直接在將 `js程式碼` 寫在 `HTML` 裡面， `<script> javascript code </script> `
-    - 將 `HTML` 連結到外面的 `.js` 檔，`<script src="./index.js"> </script>`
-    - 和 `node.js` 比起來，瀏覽器支援的語法較少
+## 在瀏覽器中執行 js
+- 直接在將 `js程式碼` 寫在 `HTML` 裡面， `<script> javascript code </script> `
+- 將 `HTML` 連結到外面的 `.js` 檔，`<script src="./index.js"> </script>`
+- 和 `node.js` 比起來，瀏覽器支援的語法較少
 
 
 - DOM ( Document Object Model )：像是把 `document` 轉換成 `object`，把 `HTML` 轉換成像是`Object`，`javascript` 就可以選取、改變瀏覽器上面的東西
 
+- - -
 
-- Selector
+## Selector
     - `querySelector`
         - 輸入參數和 `CSS` 選擇器相同
         - 只會選到符合的第一個元素
@@ -86,6 +86,8 @@
     
     ```
 
+- - -
+
 ### 事件監聽
 - 事件監聽
     ```html
@@ -146,6 +148,8 @@
 
 ```
 
+- - -
+
 ## 事件傳遞機制
 - 點到下層時，上層也被點到，也會被觸發
 - 先往下捕獲，再往上冒泡
@@ -201,6 +205,8 @@ function addEvent(className){
 </script>
 ```
 
+- - -
+
 ### 在瀏覽器上儲存資料
 - 最早的方式：cookies
     - 小型文字檔，會自動帶到 server
@@ -212,6 +218,8 @@ function addEvent(className){
 - session storage：一段期間內的
     - 不同分頁無法共用，只存在一個分頁下面
     - 其他用法都和 local storage 一樣
+
+- - -
 
 ### 資料交換（網頁和伺服器的溝通）
 - 用 node.js 和用瀏覽器發 request 的差別：node.js 是直接向 server 溝通，拿到第一手資料；瀏覽器做為一個中介者，是跑瀏覽器上的 js → 瀏覽器 → 瀏覽器的作業系統 → server 這樣一個流程，中間有第三者的介入，因此也會受到瀏覽器本身的一些限制
@@ -256,3 +264,6 @@ JSONP：json with padding。src、img不受同源政策影響。
 在信件裡面放入很小、透明的圖片，一旦打開就會發request到某網址要求圖片，就可以追蹤開信狀況
 
 - client side rendering ：動態產生，檢視原始碼不會看到任何東西
+
+- - -
+

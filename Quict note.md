@@ -1,9 +1,3 @@
-## hw6 作業檢討
-可以用語意化標籤
-- nav：navigation bar，選單列，裡面可以放list（ul 和 li）
-- main(IE 11不支援)，h1，p
-- footer
-
 ## JS補充
 - Hoisting 變數宣告提升
 - 目的：在宣告function之前就使用它

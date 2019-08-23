@@ -5,135 +5,10 @@
 - 可搭配 Bootwatch
 
 
-## jQuery
-- 一套 javascript 的 library
-- 優點：做好不同瀏覽器的支援
-```javascript
-// jQuery 語法
-    require('https://code.jquery.com/jquery-1.12.4.min.js');
-    $(document).ready(function(){   // $()就是選東西
-        $('.class_name').append("<button class='hi'>hi<div/>");
-        $('.class_name').click(function(){
-            alert('yo');
-        })
-    })
-
-    $(document).ready(function(){
-        $('.class1').click(function(){
-            $('.class2').fadeOut();  //動畫、漸層淡出，fadeIn 是出現;
-            $('.class3').css('background','lightyellow');
-            $('.a').attr('href','./path.php');
-        })
-    })
-
-// vanilla JS 語法
-document.addEventListener('DOMContentLoaded',function(){
-    document.querySelector('.class__name').addEventListener('click',function(){
-        alert('yo');
-    })
-})
-
-```
-
--[You might not need jQuery](http://youmightnotneedjquery.com/)
--[webfont](https://www.justfont.com/)
-
-
 ## 其他
 ```PHP
 echo json_encode($row);  //用來將資料轉成 JSON 格式，方便前端工作
 ```
-
-## Fetch & Promise
-### Fetch：新時代的 XML Http Request
-```javascript
-// 原始方法： XMLHttpRequest 方式
-const request = new XMLHttpRequest();
-request.onloan = function(res){
-    ......
-}
-
-// Fetch 方式
-fetch('網址')   // 直接打網址會用 Get 方式，是 Ajax，不換頁
-  .then(function(res){
-    console.log(res);
-    let json_info = res.json();  // 把資料變成 json 格式
-    let text_info = res.text();  // 把資料變成純文字
-    return 123;
-  })
-  .then( result => {   // .then 會接收上一個函式的 return，然後拿來繼續操作。這個叫做 chaining，像 jQuery 也可以
-      console.log(result);   // 會輸出123
-  })
-  .then( promise => {
-      console.log(promise);   // 如果傳 promise 進去的化，會直接在裡面執行
-  })
-  .catch( err => {
-      console.log('err',err);   // 要拿結果用 then，有錯誤要檢視用 catch
-  })
-
-const api = fetch('網址');   // api 結果的格式會是 promise，一種物件格式
-api.then( var => {
-    ...
-  })
-  .catch( var => {
-      ...
-  })
-
-
-//  promise 
-const doFitst = new Promise(function(resolve,reject){
-    resolve(...);   // 成功的動作
-    reject(...);   // 失敗的動作
-})
-doFirst.then( result => {
-    console.log(result);  // 上面 resolve 傳什麼，這邊就會接收到什麼。當上面跑完，就會跳到這裡繼續工作
-}).catch( err => {
-    console.log(err);
-})
-
-// 多層call back 會長這樣
-doFirst()
-  .then( () => doSecond() )
-  .then( () => doThird() )
-.....
-
-// 自己寫的 fetch
-const get = function(url){
-    return new Promise(
-        (resolve,reject) => {  // 簡化的箭頭函式
-            const request = new XMLHttpRequest();
-            request.open('GET',url);
-            request.onreadystatechange = function(){
-                if(request.readyState == 4 && request.status == 200){
-                    resolve(request.responseText);  // 成功後動作
-                }
-            }
-            request.onerror = function(err){
-                reject(err);   // 失敗後動作
-            }
-            request.send();
-        }
-    )
-}
-get('要放的網址').then(result=>{
-    console.log(result);
-}).catch(err=>{
-    console.log(err);
-})
-```
-
-- callback hell
-### promise
-- 標準化和非同步操作有關的程式碼，讓大家有統一的規範去呼叫
-- 如果確定函式執行完後回傳的是 promise，就可以很確定的寫 `.then` 或 `.catch`
-- 狀態
-    - pending：還沒執行時
-    - fulfilled：執行完
-    - rejected：執行失敗
-- Promise.all()
-- polyfill：補丁，IE7 沒有fetch，polyfill 是模擬 fetch 的工具
-- [待複習：call back function (第二期7-2：fetch & promise)](https://www.youtube.com/watch?v=Fwo5VUsIvd4)
-    - 30:00，call back function
 
 
 ## 前後端溝通
@@ -148,4 +23,102 @@ fetch (()=>{
 }).then((info)=>{
     ...... // 處理資料
 })
+```
+
+---
+
+## Cache
+- 緩存、暫存，CPU、瀏覽器、Server side 都可能有
+- 讀取：從記憶體、資料庫、硬碟(讀取速度快到慢)
+- 當要求資料不用很精確(或隨時更新)的時候，可以把東西存起來隨時讓人讀取，就不用每次都拿一遍資料，比較有效率
+- [循序漸進理解 HTTP Cache by huli](https://blog.techbridge.cc/2017/06/17/cache-introduction/)
+
+---
+
+
+## 資料結構 Data Structure
+- 陣列 Array(數組)、鏈結串列 Linked List（鏈表）、堆疊 Stack（棧）、佇列 Queue（隊列）、樹 Tree
+- Stack 堆疊：東西吃完把東西拿去放，東西從下往上放，拿取從上往下拿，先進後出
+    - LIFO(Last in, First out) 後進先出
+    - 執行 call back function 的原理
+```javascript
+stack.push(1);
+stack.push(30);
+stack.push(6);
+stack.pop(); // 結果是 6
+stack.pop(); // 結果是30
+```
+- Queue 佇列：先進先出
+```javascript
+queue.push(1);
+queue.push(30);
+queue.push(6);
+queue.pop(); // 結果是 1
+queue.pop(); // 結果是 30
+```
+
+
+---
+
+## javascript
+
+### closure
+```javascript
+function createCounter(){
+    var count = 0;
+    return function (){
+        count ++;
+        return count;
+    }
+}
+var counter = createCounter(); // counter 是一個 function
+console.log( counter() ); // 1
+console.log( counter() ); // 2
+
+
+// 放在 function 裡面的才會被 return、被執行
+function createCounter(){
+    var count = 0;
+    count ++;
+    return function (){
+        return count;
+    }
+}
+var counter = createCounter();
+console.log( counter() ); // 1
+console.log( counter() ); // 1
+
+
+// 兩個是不一樣的東西
+function createCounter(){
+    var count = 0;
+    count ++;
+    return function (){
+        return count;
+    }
+}
+var counter1 = createCounter();
+var counter2 = createCounter();
+counter1();
+counter1();
+console.log( counter1() ); // 3
+console.log( counter2() ); // 1
+
+
+function arr(){
+    return [1,2,3];
+}
+var a = arr();
+var b = arr();
+console.log(a === b); // false，不同的記憶體位子
+
+
+// 相同的記憶體位置
+var default_arr = [1,2,3];
+function arr(){
+    return default_arr;
+}
+var a = arr();
+var b = arr();
+console.log(a === b); // true
 ```
