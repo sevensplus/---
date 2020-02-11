@@ -131,3 +131,9 @@ vertical-align:; 　　// inline 元素怎麼和其他東西並排
 
 }
 ```
+
+### Bootstrap
+- front-end component library
+    - UI Library：有一套寫好的 CSS，直接套進 Class 就可以使用
+    - 一些 js 的功能(換頁等等)
+- 可搭配 Bootwatch

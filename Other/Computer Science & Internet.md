@@ -110,7 +110,15 @@
 | 使用者列表  |  ：GET    |  /users_list      |  /users      |
 | 更改使用者  |  ：PATCH  |  /update_user     |  /users:id   |
 
------
+---
+
+## Cache
+- 緩存、暫存，CPU、瀏覽器、Server side 都可能有
+- 讀取：從記憶體、資料庫、硬碟(讀取速度快到慢)
+- 當要求資料不用很精確(或隨時更新)的時候，可以把東西存起來隨時讓人讀取，就不用每次都拿一遍資料，比較有效率
+- [循序漸進理解 HTTP Cache by huli](https://blog.techbridge.cc/2017/06/17/cache-introduction/)
+
+---
 
 ## 網頁攻擊
 - DoS （Denial of Service）攻擊：資源有限，若有一個人一直發request給server，server就沒有心力處理其他人的request

@@ -1,5 +1,4 @@
-## CSS（Cascading Style Sheets）階層式樣式表
-### Selector
+## CSS（Cascading Style Sheets，階層式樣式表） Selector 
 - Selector 寫法：selector { attribute : value; }
 1. 直接寫在 html 的標籤裡面。  
 ```CSS
@@ -105,16 +104,11 @@ div:nth-child(3){
 }
 /* 會把值抓出來用 */
 ```
-----
-- Selector的權重  
-- 當不同指派間衝突時，` id > class > label` ，會看加權總分做計算
-
-| !important | inline style | id數 | class數 | 標籤數 |
-| ---------- | ------------ | ---- | ------ | ------ |
-| 加在CSS檔案裡面 | 寫在HTML檔案標籤 |  |  |  |
+---
 
 
-## [CSS Diner](https://flukeout.github.io/)
+## [CSS Diner](https://flukeout.github.io/) 小遊戲筆記
+
 - Level 3：
 > `ul#long`　selects `<ul id="long">`
 - Level 4：
@@ -179,3 +173,16 @@ div:nth-child(3){
 - Level 32：
 > `img[src*="/thumbnails/"]` selects all image elements that show images from the `"thumbnails"` folder.
 > `[class*="heading"]` selects all elements with "heading" in their class, like `class="main-heading"` and `class="sub-heading"`
+
+----
+
+### Selector 權重判斷  
+- 當不同指令衝突時，會看加權總分做計算；權重大有效，同分時後面的指令有效。權重比 ` id > class > label` 
+- 每個指令可以換算成得分，分數計算為 `!important * 10000 + inline style * 1000 + id * 100 + class * 10 + tag`
+    - 如 `#idName .class1` 的得分就是 `100 + 10 = 110`
+    - 如果選擇同一個物件，但另一個指令只選 `span`，只拿到 `1` 分，就會被前面的壓過去。
+
+| !important     | inline style    | id數 | class數 | 標籤數  |
+| -------------- | --------------- | ---- | ------- | ------ |
+| 加在CSS檔案裡面 | 寫在HTML檔案標籤  |     |         |        |
+

@@ -11,10 +11,7 @@
 - 協助管理資料庫的東西：phpMyAdmin、Adminer、Sequel Pro
   - 別人寫好的php檔案
 
-
 - - - - -
-- - - - -
-
 
 ## NoSQL (Not only SQL)
 - SQL：關聯式資料庫；NoSQL，混用關聯式和非關聯式資料庫
@@ -27,10 +24,7 @@
 - Partition Tolerance 中斷容忍性：
 - 例子：MongoDB
 
-
-- - - - - 
 - - - - -
-
 
 ## MySQL
 ## Table 表格基礎

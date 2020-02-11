@@ -32,7 +32,6 @@
 ---
 #### hoisting 和 closure 補 V8 編譯
 
-
 ---
 
 ### instance

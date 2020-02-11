@@ -105,6 +105,22 @@ request.onload = function() {
 request.send();
 ```
 
+- 網頁解析：中選會網頁為什麼不會掛掉
+    - 是靜態式的 html 檔，非動態。先算好票數、得票率然後直接寫上去，每隔一分鐘更新一次檔案，就不用一直去資料庫抓，也不會造成資料庫掛掉
+    - network 的 header 有 etag 記下瀏覽紀錄，如果使用者在一分鐘內重新整理，就不會發送請求，而是直接顯示之前的畫面（cache 應用）
+    - 同上，header 的 server 是 HiNetCDN，有很多個節點做分流動作
+    - 靜態網頁才用 CDN
+- Websocket
 
-
+- Axios
+    - 跟 fetch 類似 ，但 response 不用經過 JSON.parse 處理，直接就可以用
+```javascript
+import axios from 'axios'
+axios.get('http://website')
+    .then(res => {
+        this.setState({
+            posts:res.data
+        })
+    })
+```
 

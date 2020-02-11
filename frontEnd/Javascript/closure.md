@@ -50,3 +50,65 @@ for(let i=0; i<=4; i++) {
 }
 //  let 的特性：每跑一圈都會產生一個新的作用域，不用擔心 alert 的 i 都是 4
 ```
+---
+
+### closure
+```javascript
+function createCounter(){
+    var count = 0;
+    return function (){
+        count ++;
+        return count;
+    }
+}
+var counter = createCounter(); // counter 是一個 function
+console.log( counter() ); // 1
+console.log( counter() ); // 2
+
+
+// 放在 function 裡面的才會被 return、被執行
+function createCounter(){
+    var count = 0;
+    count ++;
+    return function (){
+        return count;
+    }
+}
+var counter = createCounter();
+console.log( counter() ); // 1
+console.log( counter() ); // 1
+
+
+// 兩個是不一樣的東西
+function createCounter(){
+    var count = 0;
+    count ++;
+    return function (){
+        return count;
+    }
+}
+var counter1 = createCounter();
+var counter2 = createCounter();
+counter1();
+counter1();
+console.log( counter1() ); // 3
+console.log( counter2() ); // 1
+
+
+function arr(){
+    return [1,2,3];
+}
+var a = arr();
+var b = arr();
+console.log(a === b); // false，不同的記憶體位子
+
+
+// 相同的記憶體位置
+var default_arr = [1,2,3];
+function arr(){
+    return default_arr;
+}
+var a = arr();
+var b = arr();
+console.log(a === b); // true
+```
