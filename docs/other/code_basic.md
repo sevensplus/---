@@ -1,0 +1,14 @@
+## 程式語言概述
+- [什麼是程式語言](http://it-easy.tw/assembly-language/)
+- 自然語言：人類用
+- 高階語言：常見的程式語言，需要用編譯器(compiler)或直譯器(interpreter)來轉換成機器看得動的程式碼
+    - 程序導向語言：照一般邏輯慢慢寫
+    - 物件導向語言：用「物件」觀念設計，抽象描繪物件、然後再組合物件使用。物件導向的特性為封裝(encapsulation)、繼承(inheritance)、多型(polymorphism)
+    - 編譯器 compile：將原始語言編譯成目的語言，翻譯機的概念
+- 低階語言：電腦本身的語言，無法進一步抽象
+    - 第一代：機器語言，01組合，電腦直接看得懂的東西
+    - 第二代：組合語言，很接近電腦底層，一個指令只做一兩件事
+- 逆向工程
+    - 從機器語言推回到組合語言：反組譯 disassembly
+    - 模仿程式驗證邏輯
+    - [人人都會的 apk 反編譯 by huli](http://huli.logdown.com/posts/661513-android-apk-decompile)
