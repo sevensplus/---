@@ -1,5 +1,5 @@
 - [首頁](/)
-- [網頁前端]()
+- 網頁前端
   - [HTML 簡介](/website/frontend/html)
   - [CSS Selector](/website/frontend/css_selector)
   - [CSS Preprocessor](/website/frontend/css_preprocessor)
@@ -19,17 +19,23 @@
   - [Gulp & Webpack](/website/frontend/gulp_n_webpack)
   - [React](/website/frontend/react)
   - [React part2](/website/frontend/react_part2)
+  - [Vue](/website/frontend/vue)
   - [Chrome Dev Tools for debug](/website/frontend/chrome_dev_tools)
-- [網頁後端]()
+- 網頁後端
   - [PHP](/website/backend/php)
   - [MySQL](/website/backend/mysql)
   - [Information Security](/website/backend/information_security)
   - [Example for board](/website/backend/board)
   - [Object Orientation](/website/backend/object_orientation)
-- [網路相關]()
-    - [Internet](/website/web/internet)
-    - [API & Ajax](/website/web/api_n_ajax)
-- [其他]()
-  - [Command Line & Git](/other/command_line_n_git)
+- 網路相關
+  - [Internet](/website/web/internet)
+  - [API & Ajax](/website/web/api_n_ajax)
+  - [CORS and Solution](/website/web/cors)
+  - [Session and Cookie]()
+- Git 
+  - [Git 基礎](/cs/git_basic)
+  - [Git 進階](/cs/git_advanced)
+- 其他
+  - [Command Line](/other/command_line)
   - [Code basic](/other/code_basic)
   - [Basic Algorithm](/other/basic_algorithm)

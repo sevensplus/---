@@ -1,39 +1,4 @@
-## Command Line
-> Q：`Command Line` 是什麼？  
-> A：文字型的操作視窗。我們現在看到的螢幕（資料夾、圖示等等）是圖形化視窗（Graphical User Interface），使用時點圖示進行操作。如果直接打程式碼進行操作，就可以用 `Command Line`。舉例來說，我們點擊資料夾進入某個位置，cmd 當中則是用 `cd` 來移動；我們在資料夾中按右鍵新增檔案，cmd 當中則用 `touch`。
-
-> Q：那要怎麼使用？  
-> A：Windows 到Cmder下載程式，或是直接用命令提示字元；Mac 則是搜尋terminal，或用iTerm2。
-
-補充：[美化Terminal]()    [cmder介紹]()
-
----
-### 基本操作
-|  指令   |說明                             |  範例                      |
-|---------|--------------------------------|----------------------------|
-|pwd      |路徑位置                         |`cd ..`到上一層，`~` 代表`User/who` |
-|ls       |列出所有檔案                     |                            |
-|cd       |切換位置                         |                            |
-|man      |看各個指令的內容                  |man ls                      |
-|touch    |碰一下檔案，更改最後修改時間；或是建立檔案|                      |
-|rm       |刪東西   |rmdir刪資料夾，mkdir建資料夾，rm-r資料夾底下東西全刪    |
-|mv       |移動資料夾或改名                  |mv 檔案 路徑/名稱            |
-|cp       |複製檔案                |cp 檔案 新檔案名，用-r可以複製資料夾    |
-|vim(vi)  |文字編輯器 |`i/a/o`=insert，`esc`出去insert模式，`:q`整個出去，`:w`儲存    |
-|cat      |印出內容，或是連接檔案             |                          |
-|less     |分頁印出檔案                      |                          |
-|date     |印出時間                          |                          |
-|top      |印出所有process，看和電腦有關的資訊 |                          |
-|grep     |抓關鍵字   |`grep 關鍵字 檔案`，會把被搜尋到的那行列出來         |
-|wget     |下載檔案或網頁原始碼               |`wget 網址`                |
-|curl     |測試、送出request                 |                           |
-|node     |打這個可以直接在cmd裡面寫程式碼，打指令會回傳內容   |    |
-|`>`      |redirection輸出或導向，像echo 123 > a.txt，將內容輸出到文件中並覆蓋，如果不覆蓋原本檔案用`>>`   |  |
-|`|`      |pipe連結指令                     |                            |
-
-
----
-
+# Git
 ## Git
 > Q：`Git` 的用途？  
 > A：版本控制！有時候在做專案時，可能會有不同分枝，這時候就可以用 Git 管理。如果版本做壞了，可以復原回到前幾次的狀態；也可以開發不同部分，最後再一起整合起來。
@@ -43,7 +8,7 @@
 
 ---
 
-### 基本指令
+## 基本指令
 |  指令                   | 說明                              |  範例                                 |
 |------------------------|-----------------------------------|---------------------------------------|
 | git init               | 初始化                             |                                      |
@@ -66,7 +31,7 @@
 
 ---
 
-### Branch指令 
+## Branch指令 
 |  指令                      | 說明                              |
 |---------------------------|-----------------------------------|
 | git branch new_branch_name|建立branch                         |
@@ -79,7 +44,7 @@
 
 ---
 
-### 抓 repository 更新檔
+## 抓 repository 更新檔
 |  指令                                                     | 說明                                         |
 |-----------------------------------------------------------|----------------------------------------------|
 | git remote add upstream(update_repo_name) http://...(url) | 加入專案原始來源的版本控制                     |
@@ -89,7 +54,7 @@
 
 ---
 
-### Github 操作  
+## Github 操作  
 |  指令                       | 說明                                             |
 |-----------------------------|-------------------------------------------------|
 | git remote add origin 網址  |增加一個遠端的repository，新增一個remote叫做origin  |
@@ -101,7 +66,49 @@
 > A：像是偵測事件發生等等。例如在commit前做一些檢查
 
 ---
-### Git進階指令  
-- rebase
-- cherry-pick
-- tag
+## 進階  
+### rebase
+-  re-base，「重新定義分支的參考基準」，一般分支都是從 master 長出來的。rebase 就是把另外一條線當作基準，然後合併進去。假設現在有 cat, dog, master，前兩者是同時從 master 長出來的。如果在 cat 執行 `git rebase dog`，現在的線就變成 master-dog-cat。不過並不是直接剪下貼上就好，而是貼上、發現新東西、執行指向 rebase_item 的新 commit 。
+- 如果不改到其他人檔案，誰 rebase 誰先後順序沒差，只是被 rebase 的人因為被當成基準，commit 會排在比較前面（比較舊）
+- rebase 後怎麼復原
+
+|  指令                       | 說明                                             |
+|-----------------------------|-------------------------------------------------|
+|`git reset HEAD^ --hard`    |回上一個`commit`，可是 rebase 不是新建立一個 commit，如果要合併（被入贅）的對象有兩個commit，就會蓋好兩個新 commit，這方法不能保證回到原本狀況|
+|`git reflog`                |翻找之前的紀錄，找 rebase 的指令狀態，然後 `git reset event_number --hard` 重置回去，重置 `checkout: moving from master to been_rebash_br` 這列物件 |
+|`git reset ORIG_HEAD`       |這個會記錄危險動作之前的位置（merge、reset 都算）  |
+
+### stash
+- 一個分支沒做完，要先存檔去做其他事，就用 stash 先打包起來
+- untracked 的東西沒辦法被 stash，要加 -u
+
+|  指令                       | 說明                                             |
+|-----------------------------|-------------------------------------------------|
+|`git status`  |看一下狀態|
+|`git stash`   |東西打包起來|
+|`git stash list`  |檢查打包的東西，可以打包很多次，跟 commit 一樣|
+|`git stash pop stash@{2}`  |撿回某次的東西來做。用 pop 就是指定某次，用完備份的 stash 就刪掉；沒指定就會用最晚的拿出來，`pop = apply + drop`|
+|`git stash apply stash@{1}`|撿回來的另一個指令，但用這 stash 檔案不會被砍|
+|`git stash drop stash@{0}`| 刪掉某個不要的 stash|
+
+### pull-request
+- fork：把專案複製到指定帳號下面，改完後用 pull request 和原作者互動。開 branch 的話，用 merge / rebase 合併
+- pull request 流程
+    1. fork project_a 到自己的 github 變成 project_b，clone project_b 回電腦修改
+    2. add, commit, push to project_b
+    3. 發 pull request
+
+### cherry-pick
+想要別人的分支，但不要所有的 commit，就用 `git cherry-pick yoyoyo 666666 whendr` 撈想要的過來用，可以同時撈多個，加上 `--no-commit` 就不會馬上合併
+
+### tag
+- 就是貼紙
+- 輕量標籤（lightweight tag）：指向 commit，沒有其他多的資訊
+    - 用法是 `git tag tag_name yo66yo(commit_code)`，如果不指定哪個，就貼到目前最近的一個commit
+    - 通常是個人使用或暫時標記
+- 附註標籤（annoted tag）
+    - `git tag tag_name_yo 6666yo -a -m" say somethin here "`
+    - 通常拿來標版本號
+- 標籤和分支：一樣 40 位 SHA-1
+    - 標籤不會移動
+    - 分支隨 commit 移動

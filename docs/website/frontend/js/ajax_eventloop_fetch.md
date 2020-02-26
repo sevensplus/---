@@ -45,7 +45,7 @@ fetch('網址')   // 直接打網址會用 Get 方式，是 Ajax，不換頁
     console.log(res);
     let json_info = res.json();  // 把資料變成 json 格式
     let text_info = res.text();  // 把資料變成純文字
-    return 123;
+    return json_info;
   })
   .then( result => {   // .then 會接收上一個函式的 return，然後拿來繼續操作。這個叫做 chaining，像 jQuery 也可以
       console.log(result);   // 123
